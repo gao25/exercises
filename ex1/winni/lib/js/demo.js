@@ -12,7 +12,7 @@ var wheelObj = {
   numWheel: function(){ //转盘计数
     this.num++;
   },
-  createWheel: function(mode){
+  createWheel: function(){
     this.numWheel();
     var main = '<div class="canvas-container opt'+this.num+'">\
           <img src="lib/imgs/wheel.png" class="img-wheel">\
@@ -24,7 +24,7 @@ var wheelObj = {
     $(".left-container").append(main);
     // $(".right-container").append(btn);
     $(".opt"+this.num).children(".img-point").click(function(){
-      var wheel = new startWheel(mode);
+      var wheel = new startWheel($("select").val());
       if($(this).hasClass("ani-point")){
         $(this).removeClass("ani-point");
       };
@@ -98,8 +98,8 @@ startWheel.prototype = {
 
 $(function(){
   $(".create-btn").click(function(){
-    var value = $("select").val();
-    wheelObj.createWheel(value);
+    //var value = $("select").val();
+    wheelObj.createWheel();
   })
 })
 
