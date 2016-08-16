@@ -1,0 +1,53 @@
+*{margin: 0;padding: 0;list-style: none;}
+@size:100%;
+.transform-rotate(@rotate){
+	transform:rotate(@rotate);
+	-ms-transform: rotate(@rotate);		/* IE 9 */
+	-webkit-transform: rotate(@rotate);	/* Safari and Chrome */
+	-o-transform: rotate(@rotate);		/* Opera */
+	-moz-transform: rotate(@rotate);
+}
+
+html,body{
+	width: @size;
+	height: @size;
+	min-width: 320px;
+	max-width: 640px;
+}
+.box{
+	background: url('../../images/wheel.jpg') no-repeat;
+	background-size: 100%;
+	width: 100%;
+	height: 20rem;
+	position: relative;
+	img{
+    position: absolute;
+    top: 50%;
+    margin-top: -140px;
+    left: 50%;
+    margin-left: -140px;
+	}
+}
+.img-box{
+	width: 100%;
+	height: 20rem;
+	position: relative;
+	img{
+    position: absolute;
+    top: 50%;
+    margin-top: -140px;
+    left: 50%;
+    margin-left: -140px;
+	}
+}
+.rotate{
+	animation:rotate 10s ease-in-out;
+}
+@keyframes rotate{
+	0%{
+		.transform-rotate(0)
+	}
+	100%{
+		.transform-rotate(2880deg)
+	}
+}

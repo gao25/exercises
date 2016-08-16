@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <title>转盘旋转</title>
+    <link rel="stylesheet" type="text/css" href="css/original.css">
+    <link rel="stylesheet" type="text/css" href="css/1.css">
+    <meta name="viewport" content="width=320, user-scalable=no, maximum-scale=1.3">
+    <script src="js/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+<div class="surround">
+    <div class="round" >
+        <img src="img/round.jpg" class="lets">
+        <div class="arrow"><a class="btn"><img src="img/arrow.png"></a></div>
+    </div>
+</div>
+<div class="surround" style="margin-top: 25px;">
+    <div class="roundB" >
+        <img src="img/round.jpg" class="Blets">
+        <div class="Barrow"><a class="btn"><img src="img/arrow.png"></a></div>
+    </div>
+</div>
+
+<script>
+    $(".arrow").click(function(){
+        $(".lets").css({ "transform":"initial"," -webkit-transform":"initial"," -moz-transform":"initial"," -o-transform":"initial"," -ms-transform":"initial","-webkit-transition":"initial","transition-timing-function":"initial" });
+        var _degree=prompt("请输入度数","");
+        var _ran=Math.floor(Math.random()*(5)+5);
+        var _act=_ran*360+parseInt(_degree);
+        var _sum=_ran+_degree/360;
+        $(".lets").css({ "transform":"rotate(-"+_act+"deg)"," -webkit-transform":"rotate(-"+_act+"deg)"," -moz-transform":"rotate(-"+_act+"deg)"," -o-transform":"rotate(-"+_act+"deg)"," -ms-transform":"rotate(-"+_act+"deg)","-webkit-transition":"-webkit-transform "+_sum+"s","transition-timing-function":""+_sum+"s" });
+        console.log("A"+_sum);
+        console.log("A"+ _degree);
+    });
+    $(".Barrow").click(function(){
+        $(".Barrow").css({ "transform":"initial"," -webkit-transform":"initial"," -moz-transform":"initial"," -o-transform":"initial"," -ms-transform":"initial","-webkit-transition":"initial","transition-timing-function":"initial" });
+        var _degree=prompt("请输入度数","");
+        var _ran=Math.floor(Math.random()*(5)+5);
+        var _act=_ran*360+parseInt(_degree);
+        var _sum=_ran+_degree/360;
+        $(".Barrow").css({ "transform":"rotate("+_act+"deg)"," -webkit-transform":"rotate("+_act+"deg)"," -moz-transform":"rotate("+_act+"deg)"," -o-transform":"rotate("+_act+"deg)"," -ms-transform":"rotate("+_act+"deg)","-webkit-transition":"-webkit-transform "+_sum+"s","transition-timing-function":""+_sum+"s" });
+        console.log("B"+_sum);
+        console.log("B"+ _degree);
+    });
+
+</script>
+</body>
+</html>

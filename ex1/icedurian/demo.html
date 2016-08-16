@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抽奖活动</title>
+	<style>
+	body
+	{
+		background: #d0faff;
+	}
+	.main-wrapper
+	{
+		display: flex;
+        margin: 65px 349px;
+	}
+	.rotate-box1
+	{
+		position: relative;
+        width: 354px;
+	}
+	.rotate-box2
+	{
+		 position: relative;
+         width: 200px;
+	}
+	.turn
+	{
+	    position: absolute;
+        left: 0;
+        top: 0;
+	}
+
+	.prize_box
+	{
+		width:100%;
+		height:1%;
+		background: rgba(229,216,216,0.6);
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 999;
+		display: none;
+		transition: all 1s;
+		-webkit-transition: all 2s;
+		-moz-transition: all 2s;
+	}
+	.prize_wrap{
+		width:300px;
+		height:200px;
+		background:salmon;
+		border: 5px saddlebrown solid;
+		border-radius:10px;
+		margin: 150px auto;
+	}
+	.text{
+		width:100%;
+		height: 140px;
+		display: block;
+		font-family: "Microsoft Yahei";
+		font-size: 20px;
+		line-height:140px;
+		color: white;
+		text-align:center;
+	}
+	.text b{
+		font-weight: bolder;
+		font-size: 25px;
+		color:seagreen;
+	}
+	.close_but{
+		width:80px;
+		height:50px;
+		background:skyblue;
+		border: 3px saddlebrown solid;
+		border-radius:10px;
+		margin:0 auto;
+		font-family: "Microsoft Yahei";
+		font-size: 15px;
+		font-weight: bold;
+		line-height:50px;
+		text-align:center;
+		cursor:pointer;
+	}	
+	</style>
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	
+</head>
+<body>
+	<div class="main-wrapper">
+		<div class="rotate-box1">
+			<img src="imgs/disk.png" class="disk disk1">
+			<img src="imgs/turn.png" class="turn turn1">
+		</div>
+
+		<div class="rotate-box2">
+			<img src="imgs/disk.png" class="disk disk2">
+			<img src="imgs/turn.png" class="turn turn2">
+		</div>
+	</div>
+
+	<div class="prize_box">
+		<div class="prize_wrap">
+			<span class="text">恭喜您获得了<b>二等奖</b></span>
+			<div class="close_but">关闭</div>
+		</div>
+	</div>
+
+
+	<script>
+	$(document).ready(function() {
+		var angle=0;
+		$(".turn1").unbind("click");
+		$(".turn1").click(function(){
+			angle=parseInt(prompt("你想要旋转的角度："))
+			var circle = Math.floor(Math.random()*5+5)
+			var time = circle*1
+			$(".disk1").css({
+				"-webkit-transform":"rotate(-"+parseInt(circle*360+angle)+"deg)",
+			    "-webkit-transition":"all"+" "+time+"s ease"
+			});
+			setTimeout(function(){
+				prize();
+				console.log(angle);
+				$(".disk1").css({
+				"-webkit-transform":"rotate(-"+angle+"deg)",
+			    "-webkit-transition":"all"+" "+0+"s ease"
+			    });
+			},time*1000);
+		})
+
+
+		$(".turn2").unbind("click");
+		$(".turn2").click(function(){
+			angle=parseInt(prompt("你想要旋转的角度："))
+			var circle = Math.floor(Math.random()*5+5)
+			var time = circle*1
+			$(".turn2").css({
+				"-webkit-transform":"rotate(-"+parseInt(circle*360+angle)+"deg)",
+			    "-webkit-transition":"all"+" "+time+"s ease"
+			});
+			setTimeout(function(){
+				prize();
+				console.log(angle);
+				$(".turn2").css({
+				"-webkit-transform":"rotate(-"+angle+"deg)",
+			    "-webkit-transition":"all"+" "+0+"s ease"
+			    });
+			},time*1000);
+		})
+
+		    prize_deg = ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1"]
+            award = ["特等奖","二等奖","三等奖","四等奖","五等奖","六等奖","七等奖","八等奖","九等奖","安慰奖"]
+            var j=0
+			function prize() {
+				var b = (angle / 360);
+				var c = b - parseInt(angle / 360);
+				for (var f = 0; f < 11; f++) {
+					var g = prize_deg[f];
+					if (c < g) {
+						j=f-1
+						open_prize();
+						break;
+					}
+				}
+			}
+			function open_prize(){
+				$(".prize_box").css({display:"block",height:"100%"})
+				$(".text b").html(award[j]);
+			}
+			$(".close_but").click(function(){
+				$(".prize_box").css({display:"none",height:"0%"});
+                
+			})
+
+	})
+		
+
+		
+	</script>
+</body>
+</html>

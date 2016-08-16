@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>练习:扑克牌</title>
+<link rel="stylesheet" type="text/css" href="css/pcbase.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script type="text/javascript" src="js/jquery-1.11.0-min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <!-- <div class="card-number">
+    <div class="number"></div>
+    <img class="heart-img" src="heart.png">
+  </div>
+  <div class="heart-number">
+    
+  </div> -->
+  <div class="card card-2 clear"></div>
+  <div class="card card-3 clear"></div>
+  <div class="card card-4 clear"></div>
+  <div class="card card-5 clear"></div>
+  <div class="card card-6 clear"></div>
+  <div class="card card-7 clear"></div>
+  <div class="card card-8 clear"></div>
+  <div class="card card-9 clear"></div>
+  <div class="card card-10 clear"></div>
+</div>
+</body>
+<script type="text/javascript">
+  var heart_img="<img src='heart.png' />";
+var one_heart="<div class='one-heart'>"+heart_img+"</div>";
+var two_heart="<div class='two-heart'><div class='two-first'>"+heart_img+"</div><div class='two-second'>"+heart_img+"</div></div>"
+var three_heart="<div class='three-heart'><div class='three-first'>"+heart_img+"</div><div class='three-second'>"+heart_img+"</div><div class='three-third'>"+heart_img+"</div></div>";
+var four_heart="<div class='four-heart'><div class='four-first'>"+heart_img+"</div><div class='four-second'>"+heart_img+"</div><div class='four-third'>"+heart_img+"</div><div class='four-fifth'>"+heart_img+"</div></div>";
+var num_div="";
+var rigth_div="";
+var heart_number="";
+for (var i=2;i<=10;i++) {
+  num_div="<div class='card-number-top'><div class='number'>"+i+"</div><img class='heart-img' src='heart.png' /></div>";
+  right_div="<div class='card-number-bottom'><div class='number'>"+i+"</div><img class='heart-img' src='heart.png' /></div>"
+  switch(i){
+    case 2:
+      heart_number="<div class='heart-number'>"+two_heart+"</div>";
+      break;
+    case 3:
+      heart_number="<div class='heart-number'>"+three_heart+"</div>";
+      break;
+    case 4:
+      heart_number="<div class='heart-number'>"+two_heart+two_heart+"</div>";
+      break;
+    case 5:
+      heart_number="<div class='heart-number'>"+two_heart+one_heart+two_heart+"</div>";
+      break;
+    case 6:
+      heart_number="<div class='heart-number'>"+three_heart+three_heart+"</div>";
+      break;
+    case 7:
+      heart_number="<div class='heart-number'>"+three_heart+one_heart+three_heart+"</div>";
+      break;
+    case 8:
+      heart_number="<div class='heart-number'>"+three_heart+two_heart+three_heart+"</div>";
+      break;
+    case 9:
+      heart_number="<div class='heart-number'>"+four_heart+one_heart+four_heart+"</div>";
+      break;
+    case 10:
+      heart_number="<div class='heart-number'>"+four_heart+two_heart+four_heart+"</div>";
+      break;
+  }
+  $('.card-'+i).html(num_div+heart_number+right_div);
+}
+</script>
+</html>

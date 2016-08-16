@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历表</title>
+	<link rel="stylesheet" href="http://static.xinhuaapp.com/css/base.css">
+	<style>
+	    body
+	    {
+	    	font-size: 67.5%;
+	    }
+		.main-wrapper
+		{
+		    margin: 100px auto;
+		    border: 10px solid #000;
+		    width: 570px;
+		    height: 490px;
+		}
+		.top
+		{
+			height: 1rem;
+		    width: 100%;
+		    background: rgb(237, 57, 57);
+		}
+		.detail
+		{
+			width: 8rem;
+		    height: 9rem;
+		    margin:auto;
+		}
+		.detail h1
+		{
+			font-size: 7rem;
+			color: #ed3939;
+		}
+		.detail p
+		{
+			color: #cc8f8f;
+		    font-size: 2rem;
+		    font-weight: bold;
+		}
+		.cal
+		{
+			
+		    margin-top: 2rem;
+		    font-size: 1rem;
+		    color: #a19696;
+		}
+		table
+		{
+			border-collapse: separate;
+		    border-spacing: 20px;
+		}
+		table  tr>td
+		{
+		    text-align: center;
+		}
+		.td-hover
+		{
+			background: rgb(248, 102, 102);
+            color: #fff;
+		}
+		.sun
+		{
+			color: #000
+		}
+	</style>
+</head>
+<body>
+<div class="main-wrapper">
+	<div class="top"></div>
+	<div class="content">
+		<div class="detail">
+		    <p align="center"></p>
+			<h1></h1>
+			
+		</div>
+		<div class="cal">
+			<!-- <table width="100%" cellspacing="1" cellpadding="0"> -->
+			<table class="data_table" width="100%" cellspacing="1" cellpadding="0">
+			  <thead>
+				   <tr>
+					   <td class="sun">Sun</td>
+					   <td>Mon</td>
+					   <td>Tue</td>
+					   <td>Wen</td>
+					   <td>Thr</td>
+					   <td>Fri</td>
+					   <td>Sat</td>
+				   </tr>
+			  </thead>
+			  <tbody>
+				   <tr>
+				       <td class="sun"></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				   </tr>
+				   <tr>
+				       <td class="sun"></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				   </tr>
+				   <tr>
+				       <td class="sun"></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				   </tr>
+				   <tr>
+				       <td class="sun"></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				   </tr>
+				   <tr>
+				       <td class="sun"></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				   </tr>
+				   <tr>
+				       <td class="sun"></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				       <td></td>
+				   </tr>
+			   </tbody>
+			</table>
+		</div>
+	</div>
+	
+</div>
+<script src="http://static.xinhuaapp.com/js/jquery-1.11.0-min.js"></script>
+<script>
+	$(document).ready(function(){
+         var mydate=new Date();
+		 var thisyear=mydate.getFullYear();
+		 var thismonth=mydate.getMonth()+1;
+		 var thisday=mydate.getDate();
+		 // var selectday=thisday;
+		 console.log(thisday,thismonth)
+         
+         //日期初始化
+		 function initdata(){ 
+		 var tdheight=$(".data_table tbody tr").eq(0).find("td").height();
+		 var days=totaldays(thisyear,thismonth);
+		 var weekday=getfirstday(thisyear,thismonth);
+		 $(".data_table tbody td").css("height",tdheight);
+		 $(".selectdate").val(thisyear+"年"+thismonth+"月");
+		 setcalender(days,weekday);
+		 setDate(thisday,thismonth); 
+		 }
+		 initdata();
+
+         //算某个月的总天数
+         function totaldays(year,month){ 
+		 month=parseInt(month,10);
+		 var d=new Date(year,month,0);
+		 return d.getDate();
+		 }
+
+		 //算某个月的第一天是星期几
+		 function getfirstday(year,month){ 
+		 month=month-1;
+		 var d=new Date(year,month,1);
+		 return d.getDay();
+		 }
+         
+         //顶部日期月份显示
+         function setDate(thisday,thismonth){
+         	    $("div.detail").append("<p>"+thismonth+"月</p>");
+                $("div.detail").append("<h1>"+thisday+"</h1>");    
+         }
+
+		 //往日历中填入日期
+         function setcalender(days,weekday){
+			 var a=1;
+			 for(var j=0;j<6;j++){
+				 for(var i=0;i<7;i++){
+					 if(j==0&&i<weekday){
+					 $(".data_table tbody tr").eq(0).find("td").eq(i).html("");
+					 }else{
+						 if(a<=days){
+						 $(".data_table tbody tr").eq(j).find("td").eq(i).html(a);
+						 a++;
+						 }else{
+							 $(".data_table tbody tr").eq(j).find("td").eq(i).html("");
+							 a=days+1;
+							 }
+				     }
+				 }
+			 }
+		 }
+    });
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://static.xinhuaapp.com/css/mobase.css">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div class="box">
+		<div class="round"></div>
+		<div class="finger" id="finger1"></div>
+	</div>
+	<div class="box">
+		<div class="round"></div>
+		<div class="finger" id="finger2"></div>
+	</div>
+	<script type="text/javascript" src="http://static.xinhuaapp.com/js/jquery-1.11.0-min.js"></script>
+	<script type="text/javascript">
+	function drawLottery(obj, type){
+		this.deg = 150;
+		this.type = type;
+		this.fingerObj = $(obj);
+		this.isRotate = true;
+	}
+
+	drawLottery.prototype = {
+		start: function(){
+			if(this.isRotate){
+				var deg = prompt("输入角度",this.deg);
+				if(deg){
+					this.deg = deg;
+					this.isRotate = false;
+					this.rotate();
+				}
+			}
+		},
+		rotateObj: function(){
+			var rotateObj,
+				fingerObj = this.fingerObj;
+
+			if (this.type == 1) {
+				rotateObj = $(fingerObj).prev(".round");
+				this.deg = - this.deg;
+			}else{
+				rotateObj = $(fingerObj);
+			}
+			return rotateObj;
+		},
+		rotate: function(){
+			var _this = this,
+				rotateObj = this.rotateObj(),
+				randomNum = parseInt(5 * Math.random() + 5),
+				deg = parseInt(this.deg) + randomNum * 360;
+
+			// this.fingerObj.off("click");
+			rotateObj.css({
+				"-webkit-transform": "rotate("+deg+"deg)",
+				"-webkit-transition": "all "+ 2*randomNum +"s"
+			});
+
+			setTimeout(function(){
+				console.log(_this.type+"结束")
+				_this.end();
+			}, 2*randomNum*1000);
+		},
+		end: function(){
+			this.rotateObj().css({
+				"-webkit-transform": "rotate(0deg)",
+				"-webkit-transition": "all "+ "0s"
+			});
+			this.isRotate = true;
+		}
+	}
+
+	var drawLottery1 = new drawLottery("#finger1", 1);
+	var drawLottery2 = new drawLottery("#finger2", 2);
+
+	$("#finger1").on("click",function(){
+		drawLottery1.start();
+	});
+	$("#finger2").on("click", function(){
+		drawLottery2.start();
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+.surround{
+    margin: 0 auto;
+    width: 244px;
+    position: relative;
+}
+.arrow{
+    position: absolute;
+    left: 50%;
+    top: 47%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.Go{
+   transition: rotate(90deg);
+}
+@keyframes mymove {
+    from {
+        transform:rotate(-3600deg)
+    }
+    to {
+        transform:rotate(0deg)
+    }
+}
+@-webkit-keyframes mymove /*Safari and Chrome*/  {
+    from {
+        transform:rotate(-3600deg)
+    }
+    to {
+        transform:rotate(0deg)
+    }
+}
+.stop{
+    animation-timing-function:ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+}
+.tanchukuang{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 210px;
+    height: 200px;
+    padding: 30px;
+    font-size: 20px;
+    border: 5px solid #ccc;
+    background-color: #e57238;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    display: none;
+}
+.degree{
+    position:absolute;
+    left: 50%;
+    top: 40%;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.sub{
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    width: 60px;
+    font-size: 30px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 5px 16px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.roundB{
+    position: relative;
+}
+.Barrow{
+    position: absolute;
+    left: 36%;
+    top: 30%;
+    transform-origin:50% 56%;
+}

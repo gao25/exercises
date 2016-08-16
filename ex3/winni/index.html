@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>日历</title>
+		<!-- <link rel="stylesheet" href="lib/css/base.css" type="text/css" /> -->
+		<link rel="stylesheet" href="http://static.xinhuaapp.com/css/base.css" />
+		<link rel="stylesheet" href="lib/plus/svg/demo.css">
+    	<link rel="stylesheet" href="lib/plus/svg/iconfont.css">
+	</head>
+	<style>
+		body { background-color: #d6c7a6; }
+		.calendar-container {
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			width: 600px;
+			height: 460px;
+			margin-left: -300px;
+			margin-top: -230px;
+			color: #284707;
+			font-size: 14px;
+			border: 3px solid #353840;
+			background: url(lib/imgs/point-bg.png) repeat-x rgba(255,255,255,.5);
+			background-size: 30px;
+			background-position: center 6px;
+			box-shadow: 0 2px 30px #a1a076;
+		}
+		.num-month {
+			margin-top: 30px;
+			font-size: 102px;
+			color: #e62113;
+			text-align: center;
+		}
+		.num-month i:first-child {
+			position: relative;
+			right: -25px;
+		}
+		.num-month i:last-child {
+			position: relative;
+			left: -25px;
+		}
+		.active {
+			color: #e62113 !important;
+			font-weight: bold !important;
+		}
+		.en-month {
+			display: block;
+			font-size: 14px;
+			color: #284707;
+			text-align: center;
+		}
+		.calendar-table {
+			width: 80%;
+			margin: 20px auto;
+			text-align: center;
+			table-layout: fixed;
+		}
+		.calendar-table thead {
+			font-size: 14px;
+			color: #353840;
+			font-weight: bold;
+		}
+		.calendar-table tr {
+			height: 36px;
+			line-height: 36px;
+		}
+		.calendar-table tr td:first-child,.calendar-table tr td:last-child {
+			color: #5b822f;
+		}
+	</style>
+	<body>
+		<div class="calendar-container">
+			<div class="month-content">
+				<p class="num-month">
+					<i class="icon iconfont"></i>
+					<i class="icon iconfont"></i>
+				</p>
+				<span class="en-month">ABC</span>
+			</div>
+			<table class="calendar-table">
+				<thead>
+					<tr>
+						<td>Sun</td>
+						<td>Mon</td>
+						<td>Tue</td>
+						<td>Wed</td>
+						<td>Thu</td>
+						<td>Fri</td>
+						<td>Sat</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		<script type="text/javascript" src="lib/js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+			
+
+			$(document).ready(function(){
+				//创建月份相关信息
+				createCalendar.myMonth();
+				//创建当月日历信息
+				createCalendar.setTimeTable();
+			})
+
+			var createCalendar = {
+				myTime: new Date(), 
+				allDay: 30, //当月天数
+				myMonth: function(){
+					var tmm = this.retainTwo(this.myTime.getMonth()+1);
+					//$(".num-month").text(mm);
+					var mm = this.myTime.getMonth()+1;
+					if(mm < 10){
+						$(".num-month i").eq(0).addClass('icon-0');
+						$(".num-month i").eq(1).addClass('icon-'+mm);
+					}else{
+						$(".num-month i").eq(0).addClass('icon-1');
+						$(".num-month i").eq(1).addClass('icon-'+mm%10);
+					}
+					var enmm = this.enMonth[tmm];
+					$(".en-month").text(enmm);
+				},
+				setTimeTable: function(){
+					var tableStr = "";
+					var mMonthDay = this.myTime.getDate();    //本月中的今天，几号
+					var mWeekDay = this.myTime.getDay();      //本周中的今天，周几
+					this.startWeek = mWeekDay-mMonthDay%7+1;  //获取本月中的1号是周几
+					if(this.startWeek<0){
+						this.startWeek += 7;
+					}
+					this.allDay = this.monthDay(); //当月天数
+					var allTd = this.allDay + this.startWeek; //开始空格+本月天数
+					var allTr = Math.ceil(allTd/7);           //日历行数
+					var day = 1 - this.startWeek;			  //第一格的日期（上个月则为负）
+					for(var j = 0; j < allTr; j++){
+						tableStr += "<tr>";
+						for(var i = 0;i < 7; i++){
+							if(day < 1 || day > this.allDay){  //日期小于1号或者大于本月天数则赋空
+								tableStr += "<td></td>";
+								day++;
+							}else if(day == mMonthDay){
+								tableStr += "<td class='active'>"+(day++)+"</td>"
+							}else{
+								tableStr += "<td>"+(day++)+"</td>"
+							}
+						}
+						tableStr += "</tr>";
+					}
+					$("tbody").append(tableStr);
+				},
+				//个位数补“0”
+				retainTwo: function(num){
+					if(parseInt(num)<10){
+						return "0"+num;
+					}else{
+						return num;
+					}
+				},
+				//返回月份的英文表达
+				enMonth: {
+					"01": "January",
+					"02": "February",
+					"03": "March",
+					"04": "April",
+					"05": "May",
+					"06": "June",
+					"07": "July",
+					"08": "August",
+					"09": "September",
+					"10": "October",
+					"11": "November",
+					"12": "December"
+				},
+				//返回当前月的总天数
+				monthDay: function(){
+					var mYear = this.myTime.getFullYear();
+					var mMonth = this.myTime.getMonth()+1;
+					var mMonthDay = 30;
+					// var isleap = mYear % 4 == 0 && mYear % 100 != 0 || mYear % 400 == 0;
+					// if(mMonth == 2 && isleap){
+					// 	mMonthDay = 29;
+					// }else if(mMonth == 2 && !isleap){
+					// 	mMonthDay = 28;
+					// }else if(mMonth == 1 || mMonth == 3 || mMonth == 5 || mMonth == 7 || mMonth == 8 || mMonth == 10 || mMonth == 11){
+					// 	mMonthDay = 31;
+					// }
+					var d = new Date(mYear, mMonth, 0);
+					mMonthDay = d.getDate();
+					return mMonthDay;
+				}
+			};
+		</script>
+	</body>
+</html>

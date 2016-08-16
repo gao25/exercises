@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>习题三：日历卡</title>
+<link rel="stylesheet" href="http://static.xinhuaapp.com/css/base.css">
+<style type="text/css">
+body{
+  background-color: #000;
+}
+.card{
+  margin: 20px auto;
+  width: 350px;
+  padding: 30px;
+  background-color: #fff;
+}
+.card .title{
+  text-align: center;
+  font-size: 48px;
+  color: #f00;
+  line-height: 30px;
+}
+.card .title em{
+  font-size: 12px;
+  color: #ccc;
+}
+.card dl{
+  margin-top: 20px;
+}
+.card dt, .card dd{
+  float: left;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  color: #666;
+}
+.card .red{
+  color: #900;
+}
+.card .current{
+  color: #f00;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title"><span></span><br><em></em></div>
+  <dl class="fn-clear"></dl>
+</div>
+<script type="text/javascript" src="http://static.xinhuaapp.com/js/jquery-1.11.0-min.js"></script>
+<script type="text/javascript">
+var today = new Date(),
+  today_year = today.getFullYear(),
+  today_month = today.getMonth(),
+  today_day = today.getDate();
+
+// 显示月份
+var month = today_month + 1;
+if (month < 10) {
+  $('.card .title span').html('0' + month);
+} else {
+  $('.card .title span').html(month);
+}
+var monthEn = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+$('.card .title em').html(monthEn[today_month]);
+
+// 显示星期
+var weekEn = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  dtHtml = '';
+$.each(weekEn, function(index){
+  if (index == 0 || index == 6) {
+    dtHtml += '<dt class="red">';
+  } else {
+    dtHtml += '<dt>';
+  }
+  dtHtml += weekEn[index]+'</dt>';
+});
+$('.card dl').append(dtHtml);
+
+// 显示日历
+var dayMax = new Date(today_year, today_month + 1, 0).getDate(),
+  firstDay = new Date(today_year, today_month, 1).getDay(),
+  ddHtml = '';
+for (var i=1; i<=dayMax+firstDay; i++) {
+  if (i - firstDay == today_day) {
+    ddHtml += '<dd class="current">';
+  } else {
+    if (i % 7 == 0 || i % 7 == 1) {
+      ddHtml += '<dd class="red">';
+    } else {
+      ddHtml += '<dd>';
+    }
+  }
+  if (i - firstDay > 0) {
+    ddHtml += i - firstDay;
+  } else {
+    ddHtml += '&nbsp;';
+  }
+  ddHtml += '</dd>';
+}
+$('.card dl').append(ddHtml);
+</script>
+</body>
+</html>

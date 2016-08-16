@@ -1,0 +1,170 @@
+.ovh{
+    overflow: hidden;
+}
+.fll{
+    float: left;
+}
+span{
+    color: #ec5685;
+    font-size: 42px;
+}
+span::after{
+    content: url(img/1.png);
+    position: absolute;
+    top: 42px;
+    left: -5px;
+}
+.table{
+    width: 240px;
+    margin: 10px  auto 0;
+}
+.joker{
+    width: 220px;
+    height: 315px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 0 auto 10px;
+    position: relative;
+}
+.joker .topleft{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.joker .bottomright{
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.A{
+
+}
+.mid .starA{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.mid .starB {
+    position: absolute;
+    left: 50%;
+    top: 22%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.mid .starC {
+    position: absolute;
+    left: 50%;
+    top: 78%;
+    -webkit-transform: rotate(180deg)  translate(16px, 16px);
+    transform: rotate(180deg) translate(16px, 16px);
+}
+.half{
+    width: 100px;
+    height: 100%;
+    position: relative;
+}
+.half .starD {
+    position: absolute;
+    right: 10px;
+    top: 16%;
+}
+.half .starE {
+    position: absolute;
+    right: 10px;
+    bottom: 16%;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.otherhalf{
+    width: 100px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+
+}
+.otherhalf .starD {
+    position: absolute;
+    right: 10px;
+    top: 16%;
+}
+.otherhalf .starE {
+    position: absolute;
+    right: 10px;
+    bottom: 16%;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.half .starA {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+}
+.otherhalf .starA {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+}
+.middle .starS {
+    position: absolute;
+    left: 50%;
+    top: 64%;
+    -webkit-transform: rotate(180deg)  translate(16px, 16px);
+    transform: rotate(180deg) translate(16px, 16px);
+}
+.middle .starR {
+    position: absolute;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.half .starF {
+    position: absolute;
+    right: 10px;
+    top: 36%;
+}
+.half .starH {
+    position: absolute;
+    right: 10px;
+    bottom: 36%;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.otherhalf .starF {
+    position: absolute;
+    right: 10px;
+    top: 36%;
+}
+.otherhalf .starH {
+    position: absolute;
+    right: 10px;
+    bottom: 36%;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.mid .starX{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.mid .starY{
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    -webkit-transform: rotate(180deg)  translate(16px, 16px);
+    transform: rotate(180deg) translate(16px, 16px);
+}

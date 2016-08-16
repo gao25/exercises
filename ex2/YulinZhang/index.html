@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>joker</title>
+    <script src="jquery-1.11.0-min.js"></script>
+    <link href="base.css" rel="stylesheet" />
+    <link href="1.css" rel="stylesheet" />
+</head>
+
+<body>
+<script type="text/javascript">
+   var joke="";
+   for( var j=2;j<11;j++){
+       if(j==2){
+           console.log(j);
+           joke+="<div class=joker second><div class='topleft'><span>2</span></div><div class='bottomright'><span>2</span></div><div class='mid'><img src='img/1.png' class='starB'/><img src='img/1.png' class='starC'/> </div></div>";
+       }
+       else if(j==3){
+           console.log(j);
+           joke+=" <div class='joker third'> <div class='topleft'><span>3</span></div><div class='bottomright'><span>3</span></div><div class='mid'> <img src='img/1.png' class='starA'/><img src='img/1.png' class='starB'/><img src='img/1.png' class='starC'/></div> </div>";
+       }
+       else if(j==4){
+           console.log(j);
+           joke+="  <div class='joker forth'><div class='topleft'><span>4</span></div> <div class='bottomright'><span>4</span></div><div class='half'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/></div><div class='otherhalf'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/></div></div>";
+       }
+       else if(j==5){
+           console.log(j);
+           joke+=" <div class='joker fifth'><div class='topleft'><span>5</span></div><div class='bottomright'><span>5</span></div><div class='half'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/></div><div class='mid'><img src='img/1.png' class='starA'/></div><div class='otherhalf'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/></div></div>";
+       }
+       else if(j==6){
+           console.log(j);
+           joke+="<div class='joker sixth'> <div class='topleft'><span>6</span></div><div class='bottomright'><span>6</span></div><div class='half'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starA'/><img src='img/1.png' class='starE'/> </div><div class='otherhalf'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starA'/><img src='img/1.png' class='starE'/> </div> </div>";
+       }
+       else if(j==7){
+           console.log(j);
+           joke+=" <div class='joker seventh'><div class='topleft'><span>7</span> </div><div class='bottomright'><span>7</span></div><div class='half'><img src='img/1.png' class='starD'/> <img src='img/1.png' class='starA'/><img src='img/1.png' class='starE'/></div><div class='middle'><img src='img/1.png' class='starS'/></div> <div class='otherhalf'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starA'/><img src='img/1.png' class='starE'/> </div></div>";
+       }
+       else if(j==8){
+           console.log(j);
+
+           joke+=" <div class='joker eighth'><div class='topleft'><span>8</span></div> <div class='bottomright'><span>8</span> </div><div class='half'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starA'/> <img src='img/1.png' class='starE'/></div><div class='middle'><img src='img/1.png' class='starR'/> <img src='img/1.png' class='starS'/></div> <div class='otherhalf'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starA'/><img src='img/1.png' class='starE'/></div></div>";
+       }
+       else if(j==9){
+           console.log(j);
+           joke+="  <div class='joker ninth'><div class='topleft'><span>9</span></div><div class='bottomright'><span>9</span></div><div class='half'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/><img src='img/1.png' class='starF'/><img src='img/1.png' class='starH'/></div><div class='mid'> <img src='img/1.png' class='starA'/></div><div class='otherhalf'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/><img src='img/1.png' class='starF'/><img src='img/1.png' class='starH'/></div></div>";
+       }
+       else if(j==10){
+           console.log(j);
+           joke+="  <div class='joker tenth'><div class='topleft'><span style='word-spacing: 2px;letter-spacing: -5px;margin-left: -10px;'>10</span></div><div class='bottomright'><span  style='word-spacing: 2px;letter-spacing: -5px;margin-left: -10px;'>10</span></div><div class='half'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/><img src='img/1.png' class='starF'/><img src='img/1.png' class='starH'/></div><div class='mid'><img src='img/1.png' class='starX'/><img src='img/1.png' class='starY'/> </div> <div class='otherhalf'><img src='img/1.png' class='starD'/><img src='img/1.png' class='starE'/><img src='img/1.png' class='starF'/><img src='img/1.png' class='starH'/></div></div>";
+       }
+   }
+   $("body").append(joke);
+</script>
+</body>
+</html>

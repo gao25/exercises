@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>日历</title>
+<style type="text/css">
+	.calendar{
+		width: 300px;
+		height: 300px;
+		margin: 0 auto;
+		margin-top: 50px;
+		border: 1px solid #ccc;
+	}
+	.title{
+		width: 100%;
+		height: 30px;
+		background-color: #eee;
+	}
+	.year-month{
+		width: 100px;
+		margin: 0 auto;
+		text-align: center;
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 30px;
+		color: #000; 
+		font-family: "Microsoft YaHei";
+	}
+	.context{
+		width: 100%;
+		height: 235px;
+	}
+	.week{
+		width: 100%;
+		height: 30px;
+		margin-top: 5px;
+		text-align: center;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.week h3{
+		float: left;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		width: 14.28%;
+	}
+	.calendar-day{
+		width: 100%;
+		height: 205px;
+
+	}
+	.day{
+		display: inline-block;
+		width: 14%;
+		height: 16%;
+		line-height: 32px;
+		text-align: center;
+		color: #333;
+		font-size: 14px;
+		font-family: "Microsoft YaHei";
+	}
+	.time{
+		width: 100%;
+		height: 35px;
+		border-top: 1px solid #ccc;
+	}
+	.time time{
+		display: block;
+		width: 30px;
+		margin:0 auto;
+		line-height: 32px;
+		font-family: "Microsoft YaHei";
+	}
+
+</style>
+</head>
+<body>
+<div class="calendar">
+	<div class="title">
+		<div class="year-month">2016年8月</div>
+	</div>
+	<div class="context">
+		<div class="week">
+			<h3> 日 </h3>
+      		<h3> 一 </h3>
+      		<h3> 二 </h3>
+      		<h3> 三 </h3>
+      		<h3> 四 </h3>
+      		<h3> 五 </h3>
+      		<h3> 六 </h3>
+		</div>
+		<div class="calendar-day">
+			
+		</div>
+		<div class="time">
+			<time></time>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.0-min.js"></script>
+<script type="text/javascript">
+	var days=[];
+	days[0]=31;
+	var day="";
+	var nowDate=new Date('2016-02-15');
+	var d=nowDate.getDate();
+	console.log(d);
+	var y=nowDate.getFullYear();
+	var m=nowDate.getMonth()+1;
+	$(".year-month").html(y+"年"+m+"月");
+	console.log($(".year-month").html());
+	for(var i=0;i<42;i++){
+		days[i+1]=days[i]+1;
+		if (days[i+1]>31) {days[i+1]=1;}
+		day+="<div class='day'>"+days[i]+"</div>";
+	}
+	$(".calendar-day").append(day);
+	$(".day").each(function(index){		
+		if(this.innerHTML==d){
+			$(this).css({"color":"blue",
+		                 "border":"1px dotted #ddd",
+		                 "background-color":"#3ef"});
+		}else{
+			$(this).hover(function(){
+				$(this).css({
+					"color":"blue",
+					"background-color":"#ccc"
+				})
+			},function(){
+				$(this).css({
+			 	"color":"#333",
+			 	"background-color":"#fff"
+				})
+			})
+		}
+		if(index<7&&this.innerHTML>=25||index>31&&this.innerHTML<=11){
+			$(this).css("color","#999");
+			$(this).mouseout(function(){
+				$(this).css("color","#999");
+			})
+		}
+	})
+	setInterval(function(){
+		var nowDate=new Date();
+		var h=nowDate.getHours()<10?"0"+nowDate.getHours():nowDate.getHours();
+		var m=nowDate.getMinutes()<10?"0"+nowDate.getMinutes():nowDate.getMinutes();
+		var s=nowDate.getSeconds()<10?"0"+nowDate.getSeconds():nowDate.getSeconds();
+		$("time").html(h+":"+m+":"+s);
+	},10);
+</script>
+</body>
+</html>

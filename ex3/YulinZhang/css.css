@@ -1,0 +1,54 @@
+body{
+    background-color: #35383f;
+}
+.calendar{
+    width: 100%;
+    margin: 4rem 0 0 0  ;
+    padding:2rem 0 3rem 0;
+    background-color: #2d3037;
+    position: relative;
+}
+.dot{
+    border: 2px solid #ff2b4d;
+    width: 17rem;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.daym{
+
+}
+.daym p{
+    color: #ffffff;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 20px;
+    width: 5rem;
+    z-index: 2;
+    position: absolute;
+    top: 2.025rem;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #35383f;
+}
+.daym table{
+   width: 95%;
+
+    margin: 2rem auto 0;
+}
+.daym table td{
+    border: 0.5px solid #ccc;
+    width: 56px;
+    height: 2.125rem;
+    font-size: 0.75rem;
+    color: #fff;
+    text-align:right;
+    padding: 10px 4px 0 0;
+}
+.daym td span{
+    position: relative;
+    top: 0.625rem;
+}
+.calendar .daym .light{
+    color: #ff2b4d;
+}

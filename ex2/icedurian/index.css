@@ -1,0 +1,205 @@
+* { margin:0; padding:0; }
+ul { 
+	width:510px; 
+	height:510px; 
+	margin:0 auto;
+}
+li { 
+	position:relative; 
+	float:left; 
+	list-style:none; 
+	width:150px; 
+	margin:10px; 
+}
+span { 
+	position:absolute; 
+	top:0; 
+	left:0;
+	width:100%; 
+	height:100%; 
+	line-height:150px; 
+	text-align:center; 
+	font-size:50px; 
+	font-weight:bold; 
+	background:rgba(255, 255, 255, 0.7); color:red;  
+}
+.active { 
+	width:140px; 
+	height:140px; 
+	border:5px dashed red; 
+}
+input { 
+	position: absolute;
+    left: 191px;
+    top: 260px;
+    width: 100px;
+    height: 30px;
+    background: #19457d;
+    color: #fff;
+    border: navajowhite;
+    font-family: "Microsoft Yahei";
+    border-radius: 20px;
+    box-shadow: 3px 3px 7px rgba(0,0,0,0.3); 
+}
+body {  
+  background: #0097a6; 
+
+}         
+.card {  
+  position: relative;
+  float: left;  
+  margin: 0; 
+  width: 150px;  
+  height: 220px;  
+  border-radius: 10px;  
+  background: #fff;   
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.3);  
+}
+.num-img
+{
+	margin: 0px 10px;
+    width: 15px;
+}
+.num p
+{
+	margin: 0px 10px;
+	font-size: 30px;
+	font-weight: bold;
+    color: #ff0707;
+}
+.flipx 
+{ 
+	transform: rotateX(180deg); 
+}
+.flip
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: rotate3d(0,0,-1,180deg);	
+} 
+.card-top
+{
+	position: absolute;
+} 
+.card2-1
+{
+	position: absolute;
+    top: 19px;
+    left: 57px;
+} 
+.card2-2
+{
+	position: absolute;
+	bottom: 19px;
+    left: 57px;
+}    
+.card3-1
+{
+	position: absolute;
+    top: 90px;
+    left: 57px;
+}
+ /*card4*/
+ .card4-1
+{
+	position: absolute;
+    top: 19px;
+    right: 32px;
+} 
+.card4-2
+{
+	position: absolute;
+    top: 19px;
+    left: 31px;
+} 
+.card4-3
+{
+	position: absolute;
+    bottom: 19px;
+    left: 31px;
+} 
+.card4-4
+{
+	position: absolute;
+    bottom: 19px;
+    right: 32px;
+} 
+/*card5*/
+ .card5-1
+{
+	position: absolute;
+    top: 88px;
+    right: 58px;
+}
+/*card6*/
+.card6-1
+{
+	position: absolute;
+    top: 89px;
+    right: 32px;
+} 
+.card6-2
+{
+	position: absolute;
+    top: 89px;
+    left: 31px;
+} 
+/*card7*/
+.card7-1
+{
+	position: absolute;
+    top: 125px;
+    right: 58px;
+}
+/*card8*/
+.card8-1
+{
+	position: absolute;
+    top: 54px;
+    right: 58px;
+}
+/*card9*/
+.card9-1
+{
+	position: absolute;
+    top: 70px;
+    right: 32px;
+} 
+.card9-2
+{
+	position: absolute;
+    top: 70px;
+    left: 31px;
+} 
+.card9-3
+{
+	position: absolute;
+    bottom: 70px;
+    left: 31px;
+} 
+.card9-4
+{
+	position: absolute;
+    bottom: 70px;
+    right: 32px;
+}
+.card9-5
+{
+	position: absolute;
+    top: 97px;
+    right: 58px;
+} 
+/*card10*/
+.card10-1
+{
+	position: absolute;
+    top: 44px;
+    right: 58px;
+} 
+.card10-2
+{
+	position: absolute;
+    bottom: 43px;
+    right: 58px;
+} 

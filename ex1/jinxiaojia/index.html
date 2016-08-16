@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>习题：抽奖转盘</title>
+<link rel="stylesheet" href="http://static.xinhuaapp.com/css/base.css">
+<style type="text/css">
+body{
+  background: #d0faff;
+}
+.box {
+  float: left;
+  position: relative;
+  margin: 10px;
+  width: 280px;
+  height: 300px;
+  overflow: hidden;
+}
+.round, .finger{
+  position: absolute;
+  width: 280px;
+  height: 280px;
+}
+.round{
+  background: url(round.png) no-repeat center center;
+}
+.finger{
+  background: url(finger.png) no-repeat center center;
+}
+.text{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  color: #f00;
+}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="round j-rotate"></div>
+  <div class="finger"></div>
+  <div class="text"></div>
+</div>
+<div class="box">
+  <div class="round"></div>
+  <div class="finger j-rotate"></div>
+  <div class="text"></div>
+</div>
+<script type="text/javascript" src="http://static.xinhuaapp.com/js/jquery-1.11.0-min.js"></script>
+<script type="text/javascript">
+var rotateClass = function(obj, direction, callback){
+  this.obj = obj; // 旋转的对象
+  this.direction = direction; // 旋转角度转换，要让转盘转到30度，实际转盘要转-30度
+  this.callback = callback; // 回调
+  this.deg = 0;
+  this.init();
+}
+rotateClass.prototype = {
+  init: function(){
+    var _this = this;
+    this.runState = false;
+    this.obj.on('webkitTransitionEnd', function(){
+      _this.callback('旋转结束 / ' + _this.deg + '度');
+      _this.runState = false;
+      if (_this.direction) {
+        var resetDeg = - _this.deg;
+      } else {
+        var resetDeg = _this.deg;
+      }
+      _this.obj.css({
+        "-webkit-transform": "rotate("+resetDeg+"deg)",
+        "-webkit-transition": "all 0s"
+      });
+    });
+  },
+  rotate: function(deg){
+    var _this = this;
+    this.runState = true;
+    this.deg = deg;
+    setTimeout(function(){
+      var randomNum = Math.floor(5 * Math.random() + 5);
+      if (_this.direction) {
+        var toDeg = randomNum * 360 - deg;
+      } else {
+        var toDeg = + deg + randomNum * 360;
+      }
+      _this.callback(randomNum+'圈' + ' / ' + deg + '度');
+      _this.obj.css({
+        "-webkit-transform": "rotate("+toDeg+"deg)",
+        "-webkit-transition": "all "+ randomNum +"s ease-in-out"
+      });
+    }, 100);
+  }
+};
+
+// 标识转盘，定义转盘
+$('.box').each(function(index){
+  // 转盘下的文本
+  var textObj = $(this).find('.text');
+  textObj.html('转盘' + (index+1));
+  // 判断是盘转还是指针转
+  var rotateObj = $(this).find('.j-rotate');
+  if (rotateObj.hasClass('finger')) {
+    var direction = false;
+  } else {
+    var direction = true;
+  }
+  // 创建对象
+  var newRotate = new rotateClass($(this).find('.j-rotate'), direction, function(msg){
+    textObj.html('转盘' + (index+1) + '：' + msg)
+  });
+  // 绑定操作
+  $(this).find('.finger').click(function(){
+    if (newRotate.runState) {
+      alert('转盘正在旋转，无法执行操作');
+    } else {
+      var deg = prompt("输入 <转盘"+(index+1)+"> 旋转角度：");
+      if (deg == null || deg == '') {
+        // nothing
+      } else {
+        if (deg && !isNaN(deg)) {
+          newRotate.rotate(deg);
+        } else {
+          alert('输入的角度无法识别');
+        }
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

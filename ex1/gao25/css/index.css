@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+    width: 600px;
+    margin: 0 auto;
+}
+.rotate-wrap1{
+    width: 244px;
+    float: left;
+    position: relative;
+}
+.rotate-wrap2{
+    width: 244px;
+    float: right;
+    position: relative;
+}
+.rotate-table{
+    margin-top: 20px;
+}
+.pointer{
+    position: absolute;
+    top: 91px;
+    left: 88px;
+}

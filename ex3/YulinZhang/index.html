@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calendar</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <!--
+     <script src="jquery-1.9.1.min.js"></script>
+    -->
+    <script src="index.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    var _day = new Date();//获取今天的日期
+    alert(_day);//显示一下今天的详细信息
+
+    //取到所有的值
+    function cal(){
+        var k=1;//星期数
+        var j=1;//星期
+        var tomonth=_day.getMonth();
+        var to_day=1;//日期
+        var max;
+        var temp= _day.getDate();
+
+
+        document.write("<div class='calendar'><div class='dot'></div><div class='daym'><p> "+_day.getFullYear()+"-"+(tomonth+1)+"-"+(temp)+"</p><table><tbody><tr> <td><span>SUN</span></td> <td><span>MON</span></td><td><span>TUE</span></td><td><span>WED</span></td> <td><span>THU</span></td><td> <span>FRI </span></td><td><span>SAT</span></td></tr>");
+
+        temp=_day.getDate();
+        _day.setDate(1);
+        var tempday=_day.getDay();//返回第一天是星期几
+        console.log(tempday);
+        _day.setDate(temp);
+
+        switch ((tomonth+1)) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                max=31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                max=30;
+                break;
+            default:
+                max=29;//这里没有考虑闰月！！
+        }
+
+        //alert("本月第一天是 " + [_day.getDay()]);
+
+        for(k=0;k<6;k++){//行数
+            document.write("<tr>");
+            for(j=0;j<=6;j++){
+                document.write ("<td>");
+                if(j>=(tempday)) {
+                    tempday=0;//设置为最小，相当于取消判断条件
+                    if( to_day<=max) {
+                        if( to_day==temp)
+                            document.write ("<span class='light'>" + to_day + "</span>");
+                        else if(j==0)
+                           document.write ("<span>"+to_day+ "</span>");
+                        else
+                            document.write ("<span>"+to_day+ "</span>" );
+                        to_day++;
+                    }
+                }
+                document.write ("</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</tbody></table></div></div>");
+    }
+    cal();
+</script>
+</body>
+</html>

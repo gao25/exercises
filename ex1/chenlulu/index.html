@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://static.xinhuaapp.com/css/mobase.css">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div class="box">
+		<div class="round"></div>
+		<div class="finger" id="finger1"></div>
+	</div>
+	<div class="box">
+		<div class="round"></div>
+		<div class="finger" id="finger2"></div>
+	</div>
+	<script type="text/javascript" src="http://static.xinhuaapp.com/js/jquery-1.11.0-min.js"></script>
+	<script type="text/javascript">
+
+	function drawLottery(obj, type){
+		var rotateObj;
+		var deg = prompt("输入角度",150);
+
+		if(deg){
+
+			var randomNum = parseInt(5 * Math.random() + 5);
+			deg = parseInt(deg) + randomNum * 360;
+
+			if (type == 1) {
+				rotateObj = $(obj).prev(".round");
+				deg = - deg;
+			}else{
+				rotateObj = $(obj);
+			}
+
+			$(obj).off("click");
+			rotateObj.css({
+				"-webkit-transform": "rotate("+deg+"deg)",
+				"-webkit-transition": "all "+ 2*randomNum +"s"
+			});
+
+			setTimeout(function(){
+				console.log(type+"结束");
+				$(obj).on("click",function(){
+					rotateObj.css({
+						"-webkit-transform": "rotate(0deg)",
+						"-webkit-transition": "all 0s"
+					});
+					drawLottery(obj, type);
+				});
+			}, 2*randomNum*1000);
+
+		}
+	}
+
+	$("#finger1").on("click",function(){
+		drawLottery(this, 1)
+	});
+	$("#finger2").on("click", function(){
+		drawLottery(this, 2)
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*简短的CSS reset*/
+body,ol,ul,li,h1,h2,h3,h4,h5,h6,p,form,input,textarea,select,table,tr,th,td,button {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+html {
+	height: 100%;
+}
+body {
+	width: 800px;
+	height: 100%;
+	margin: 0 auto;
+	color: #333;
+	font-size: 14px;
+	font-family: arial;
+	background: #eee;
+	}
+ul,ol {list-style: none;}
+li {list-style-type: none;}
+img {
+	display: block;
+	vertical-align: top;
+	border: 0 none;
+	}
+h1,h2,h3,h4,h5,h6 {
+	font-size: 14px;
+	font-weight: normal;
+	}
+a {text-decoration: none; color: inherit;}
+a:hover{}
+select,input,textarea {
+	font-size: 100%;
+	font-family: inherit;
+}
+
+/*通用CSS样式库*/
+.clearfix:after { display: block; content: ""; height: 0; visibility: hidden; clear: both; }
+
+/*网站CSS样式库*/
+.input-group {
+	text-align: center;
+	margin: 10px auto;
+}
+/*网站通用按钮样式*/
+button {
+	min-width: 60px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	color: #eee;
+	background-color: #333;
+	border-radius: 4px;
+}
+.input-group button {
+	margin-left: -4px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+/*网站通用文本框等控件样式*/
+select {
+	min-width: 80px;
+	height: 28px;
+	text-align: center;
+	line-height: 28px;
+	border-radius: 4px;
+}
+.input-group select {
+	border: 1px solid #333;
+	box-sizing: border-box;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+/*单页面的精细结构和样式*/
+.left-container, .right-container {
+	float: left;
+	min-height: 100%;
+	overflow: hidden;
+}
+.left-container {
+	width: 60%;
+	background-color: #d0faff;
+}
+.canvas-container {
+	position: relative;
+}
+.img-wheel {
+	width: 200px;
+	margin: 20px auto;
+}
+.img-point {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 200px;
+	margin-left: -100px;
+	margin-top: -100px;
+}
+.right-container {
+	width: 40%;
+	background-color: #eee;
+}
+.p-title {
+	margin-left: 12px;
+	margin-top: 20px;
+}
+.start-btn {
+	display: block;
+	width: 80px;
+	margin: 20px auto;
+	color: #fff;
+	line-height: 32px;
+	background-color: #333;
+	text-align: center;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.ani-wheel {
+	animation: rotate 1s;
+	animation-fill-mode: both;
+	animation-timing-function: linear;
+	-webkit-animation: rotate 1s;
+	-webkit-animation-fill-mode: both;
+	-webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes rotate {
+	from{
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(-359deg);
+		-webkit-transform: rotate(-359deg);
+	}
+
+}
+
+
+.ani-point {
+	animation: brotate 1s;
+	animation-fill-mode: both;
+	animation-timing-function: linear;
+	-webkit-animation: brotate 1s;
+	-webkit-animation-fill-mode: both;
+	-webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes brotate {
+	from{
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(359deg);
+		-webkit-transform: rotate(359deg);
+	}
+
+}
